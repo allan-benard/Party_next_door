@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARTYNEXTDOOR - Profil</title>
+    <link rel="stylesheet" href="css/profil.css">
+</head>
+<body>
+    <nav>
+        <h1>PARTYNEXTDOOR</h1>
+        <div>
+            <a href="#festivals">FESTIVALS</a>
+            <a href="#concerts">CONCERTS</a>
+        </div>
+        <!-- Settings toggle button -->
+    <button class="settings-toggle" onclick="toggleSettings()">⚙️</button>
+
+    <!-- Settings overlay -->
+    <div class="settings-overlay" id="settingsMenu">
+        <button class="close-button" onclick="toggleSettings()">×</button>
+        
+        <div class="user-profile">
+            <img src="https://via.placeholder.com/50" alt="Photo de profil">
+            <span>NOM D'UTILISATEUR</span>
+        </div>
+
+        <ul class="menu-list">
+            <li class="menu-item">Profil</li>
+            <li class="menu-item">Villes</li>
+            <li class="menu-item">Organisateur</li>
+            <li class="menu-item">FAQ</li>
+            <li class="menu-item">Partager l'application</li>
+        </ul>
+
+        <div class="contact-info">
+            <p>support@partynextdoor.com</p>
+            <p>+33 6 XX XX XX XX</p>
+        </div>
+    </div>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="profile-grid">
+                <section class="profile-section">
+                    <h2>MON PROFIL</h2>
+                    <img src="https://via.placeholder.com/100" alt="Photo de profil" class="profile-photo">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">NOM D'UTILISATEUR</label>
+                            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">NOM</label>
+                            <input type="text" id="lastname" name="lastname" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">PRÉNOM</label>
+                            <input type="text" id="firstname" name="firstname" placeholder="Prénom">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ADRESSE MAIL</label>
+                            <input type="email" id="email" name="email" placeholder="Adresse mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">BIO</label>
+                            <textarea id="bio" name="bio" rows="4" placeholder="Bio"></textarea>
+                        </div>
+                        <a href="modif_profil.html"><button type="submit" class="button">FAIRE DES MODIFICATIONS</button></a>
+                    </form>
+                    <button class="button" style="background-color: transparent; color: gray; margin-top: 10px;">DÉCONNEXION</button>
+                </section>
+
+                <section class="tickets-section">
+                    <h2>MES BILLETS</h2>
+                    <div class="ticket-grid">
+                        <img src="https://via.placeholder.com/200x300" alt="Billet 1" class="ticket-image">
+                        <img src="https://via.placeholder.com/200x300" alt="Billet 2" class="ticket-image">
+                    </div>
+                    <h3>ENREGISTRÉS/FAVORIS</h3>
+                    <div class="favorites">
+                        <div class="favorite-item">
+                            <div class="favorite-icon" style="background-color: #4CAF50;"></div>
+                            <span>La Gaîtière</span>
+                        </div>
+                        <div class="favorite-item">
+                            <div class="favorite-icon" style="background-color: #F44336;"></div>
+                            <span>HeartDisco</span>
+                        </div>
+                        <div class="favorite-item">
+                            <div class="favorite-icon" style="background-color: #E0E0E0;"></div>
+                            <span>Rock In Scene</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>INVITE TES AMIS À FAIRE LA FÊTE AVEC TOI!</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSettings() {
+            const menu = document.getElementById('settingsMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('settingsMenu');
+            const toggle = document.querySelector('.settings-toggle');
+            
+            if (!menu.contains(event.target) && event.target !== toggle) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
