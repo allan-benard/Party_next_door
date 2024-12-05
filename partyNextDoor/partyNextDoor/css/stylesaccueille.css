@@ -282,6 +282,8 @@ header{
         height: 100px;
         margin-right: 0px;
         margin-top: 0px;
+        top :0%;
+        left: 0px;
     }
 }
 
