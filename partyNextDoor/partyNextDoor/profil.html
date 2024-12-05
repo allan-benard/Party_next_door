@@ -8,36 +8,16 @@
 </head>
 <body>
     <nav>
-        <h1>PARTYNEXTDOOR</h1>
+        <div class="logo">
+            <img src="https://i.ibb.co/6btLmVY/icon-logo1.png">
+        </div>
         <div>
             <a href="#festivals">FESTIVALS</a>
             <a href="#concerts">CONCERTS</a>
         </div>
-        <!-- Settings toggle button -->
-    <button class="settings-toggle" onclick="toggleSettings()">⚙️</button>
-
-    <!-- Settings overlay -->
-    <div class="settings-overlay" id="settingsMenu">
-        <button class="close-button" onclick="toggleSettings()">×</button>
         
-        <div class="user-profile">
-            <img src="https://via.placeholder.com/50" alt="Photo de profil">
-            <span>NOM D'UTILISATEUR</span>
-        </div>
-
-        <ul class="menu-list">
-            <li class="menu-item">Profil</li>
-            <li class="menu-item">Villes</li>
-            <li class="menu-item">Organisateur</li>
-            <li class="menu-item">FAQ</li>
-            <li class="menu-item">Partager l'application</li>
-        </ul>
-
-        <div class="contact-info">
-            <p>support@partynextdoor.com</p>
-            <p>+33 6 XX XX XX XX</p>
-        </div>
-    </div>
+        <button class="settings-toggle" onclick="toggleSettings()">⚙️</button>
+    
     </nav>
 
     <div class="container">
@@ -67,7 +47,7 @@
                             <label for="bio">BIO</label>
                             <textarea id="bio" name="bio" rows="4" placeholder="Bio"></textarea>
                         </div>
-                        <a href="modif_profil.html"><button type="submit" class="button">FAIRE DES MODIFICATIONS</button></a>
+                        <button type="submit" class="button">ENREGISTRER LES MODIFICATIONS</button>
                     </form>
                     <button class="button" style="background-color: transparent; color: gray; margin-top: 10px;">DÉCONNEXION</button>
                 </section>
@@ -102,6 +82,29 @@
         </footer>
     </div>
 
+    <!-- Settings overlay -->
+    <div class="settings-overlay" id="settingsMenu">
+        <button class="close-button" onclick="toggleSettings()">×</button>
+        
+        <div class="user-profile">
+            <img src="https://via.placeholder.com/50" alt="Photo de profil">
+            <span>NOM D'UTILISATEUR</span>
+        </div>
+
+        <ul class="menu-list">
+            <li class="menu-item">Profil</li>
+            <li class="menu-item">Villes</li>
+            <li class="menu-item">Organisateur</li>
+            <li class="menu-item">FAQ</li>
+            <li class="menu-item">Partager l'application</li>
+        </ul>
+
+        <div class="contact-info">
+            <p>support@partynextdoor.com</p>
+            <p>+33 6 XX XX XX XX</p>
+        </div>
+    </div>
+
     <script>
         function toggleSettings() {
             const menu = document.getElementById('settingsMenu');
@@ -111,7 +114,7 @@
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('settingsMenu');
-            const toggle = document.querySelector('.settings-toggle');
+            const toggle = document.querySelector('.button');
             
             if (!menu.contains(event.target) && event.target !== toggle) {
                 menu.classList.remove('active');
