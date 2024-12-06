@@ -71,7 +71,7 @@ input, textarea {
 }
 .settings-toggle {
     position: absolute;
-    top: 45px;
+    top: 25px;
     right: 20px;
     background: none;
     border: none;
