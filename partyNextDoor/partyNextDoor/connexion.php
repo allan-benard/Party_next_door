@@ -1,39 +1,49 @@
 <?php
-// Database connection details
-$host = 'localhost';
-$dbname = 'bddpartynextdoor';
-$dbuser = 'root'; // Change if using a different database username
-$dbpass = ''; // Enter your password if required
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bddpartynextdoor";
+
+// Créer une connexion
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Vérifier la connexion
+if ($conn->connect_error) {
+    die("Erreur de connexion : " . $conn->connect_error);
 }
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom_utilisateur = $_POST['username'] ?? '';
-    $mot_de_passe = $_POST['password'] ?? '';
+// Vérifier si les données du formulaire ont été envoyées
+if (isset($_POST['username'], $_POST['password'])) {
+    // Récupérer et échapper les données utilisateur
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $_POST['password']; // Ne pas échapper ici pour comparer au hash plus tard
 
-    if (!empty($nom_utilisateur) && !empty($mot_de_passe)) {
-        // Query to fetch user by `nom_utilisateur`
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE nom_utilisateur = :nom_utilisateur");
-        $stmt->execute(['nom_utilisateur' => $nom_utilisateur]);
-        $user = $stmt->fetch();
+    // Rechercher l'utilisateur dans la base de données
+    $sql = "SELECT * FROM Utilisateur WHERE nom_utilisateur = '$username'";
+    $result = $conn->query($sql);
 
-        // Verify the password
-        if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
-            echo "Connexion réussie ! Bienvenue, " . htmlspecialchars($user['nom_utilisateur']) . ".";
-            // Redirect to another page if needed
-            // header("Location: event.html");
-            // exit;
+    if ($result->num_rows > 0) {
+        // Récupérer les données de l'utilisateur
+        $user = $result->fetch_assoc();
+
+        // Vérifier le mot de passe
+        if (password_verify($password, $user['mot_de_passe'])) {
+            // Mot de passe correct, connecter l'utilisateur
+            echo "Connexion réussie. Bienvenue, " . htmlspecialchars($user['nom_utilisateur']) . "!";
         } else {
-            echo "Nom d'utilisateur ou mot de passe incorrect.";
+            // Mot de passe incorrect
+            echo "Erreur : Nom d'utilisateur ou mot de passe incorrect.";
         }
     } else {
-        echo "Veuillez remplir tous les champs.";
+        // Utilisateur non trouvé
+        echo "Erreur : Nom d'utilisateur ou mot de passe incorrect.";
     }
+} else {
+    echo "Veuillez remplir tous les champs.";
 }
+
+// Fermer la connexion
+$conn->close();
+
 ?>
