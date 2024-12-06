@@ -5,33 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 <body>
     <div class="form-container">
         <h1><strong>Se connecter</strong></h1>
+        <form action="connexion.php" method="POST">
+            <!-- Form Group for Username -->
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" required id="username" name="username">
+            </div>
 
-        <!-- Form Group for Username -->
-        <div class="form-group">
-            <label for="username">Nom d'utilisateur</label>
-            <input type="text" required id="username" name="Nom d'utilisateur">
-        </div>
+            <!-- Form Group for Password -->
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" required id="password" name="password">
+            </div>
 
-        <!-- Form Group for Password -->
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" required id="password" name="Mot de passe">
-        </div>
+            <!-- Forgot password link -->
+            <div class="forgot-password">
+                <a href="mot_de_passe_oublie.html">Mot de passe oublié ?</a>
+            </div>
 
-        <!-- Forgot password link -->
-        <div class="forgot-password">
-            <a href="mot_de_passe_oublié.html">Mot de passe oublié ?</a>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-button">
-            <a href="event.html">Se connecter</a>
-        </button>
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button">Se connecter</button>
+        </form>
     </div>
 </body>
 </html>
