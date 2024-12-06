@@ -79,6 +79,11 @@ input, textarea {
     cursor: pointer;
     
 }
+.logo img {
+    height: 80px;
+    margin-right: 20px;
+    margin-top: 40px;
+}
 .button {
     background-color:#333;
     color: white;
