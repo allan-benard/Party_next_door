@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-    <title>party</title>
+    <title>PartyNextDoor - Guide des soirées et festivals</title>
     <style>
         /* Reset & Base Styles */
         * {
@@ -16,9 +14,34 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #000;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
             line-height: 1.5;
+        }
+
+        /* Gradient Background */
+        .gradient-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 80vh;
+            background: linear-gradient(45deg, #FFB1B1, #FF9B9B, #FFB4A2);
+            clip-path: path('M0,0 C100,0 100,50 50,100 C0,150 0,100 0,0');
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .gradient-shape-2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40%;
+            height: 60vh;
+            background: linear-gradient(45deg, #FFB4A2, #FFAA8C, #FF9B7D);
+            clip-path: path('M100,100 C0,100 0,50 50,0 C100,-50 100,0 100,100');
+            opacity: 0.3;
+            z-index: -1;
         }
 
         /* Header Styles */
@@ -27,11 +50,12 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 64px;
-            background-color: rgba(0, 0, 0, 0.9);
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(8px);
             z-index: 100;
             padding: 0 24px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
@@ -44,11 +68,8 @@
             gap: 24px;
         }
 
-        .logo {
-            font-weight: bold;
-            font-size: 20px;
-            text-decoration: none;
-            color: #fff;
+        .logo img {
+            height: 60px;
         }
 
         .search-bar {
@@ -59,11 +80,11 @@
 
         .search-input {
             width: 100%;
-            padding: 12px 16px 12px 40px;
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            color: #fff;
+            padding: 12px 16px;
+            background-color: #f5f5f5;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            color: #000;
             font-size: 14px;
         }
 
@@ -73,81 +94,115 @@
         }
 
         .btn {
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 24px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #000;
+            color: #fff;
+            border: none;
         }
 
         .btn-outline {
-            border: 1px solid #fff;
-            color: #fff;
-            background: transparent;
-        }
-
-        .btn-ghost {
-            color: #fff;
+            border: 1px solid #000;
+            color: #000;
             background: transparent;
         }
 
         /* Hero Section */
         .hero {
-            padding: 120px 24px 80px;
+            padding: 160px 24px 80px;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
+            text-align: center;
+            position: relative;
         }
 
         .hero-content {
-            max-width: 500px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 56px;
             line-height: 1.1;
             margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            color: #999;
-            font-size: 18px;
-            margin-bottom: 32px;
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-weight: 400;
         }
 
+        .cta-button {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 48px;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .app-preview {
+            max-width: 530px;
+            margin: 0 auto;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(19, 18, 18, 0.527);
+        }
+
+        .app-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Store Buttons */
         .store-buttons {
             display: flex;
             gap: 16px;
-            align-items: center;
+            justify-content: center;
+            margin-top: 38px;
         }
 
         .store-link {
-            background: #1a1a1a;
-            padding: 8px 24px;
-            border-radius: 8px;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .rating {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #999;
+            background: #000;
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s ease;
         }
 
-        .stars {
-            color: #ffd700;
+        .store-link:hover {
+            transform: translateY(-2px);
         }
 
         /* Events Section */
         .events {
             padding: 80px 24px;
-            background-color: #111;
+            background-color: #fff;
         }
 
         .events-header {
@@ -156,7 +211,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         .events-grid {
@@ -168,41 +223,47 @@
         }
 
         .event-card {
-            background: #000;
-            border-radius: 12px;
+            background: #fff;
+            border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
         }
 
         .event-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .event-image {
             width: 100%;
-            height: 200px;
+            height: 240px;
             object-fit: cover;
         }
 
         .event-content {
-            padding: 16px;
+            padding: 24px;
         }
 
         .event-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000;
         }
 
         .event-venue {
-            color: #999;
-            margin-bottom: 8px;
+            color: #666;
+            margin-bottom: 16px;
+            font-size: 14px;
         }
 
         .event-details {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #000;
         }
 
         .event-tags {
@@ -212,488 +273,227 @@
         }
 
         .tag {
-            background: #1a1a1a;
-            padding: 4px 8px;
-            border-radius: 4px;
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 20px;
             font-size: 12px;
-            text-transform: uppercase;
+            font-weight: 500;
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #fff;
+            padding: 80px 24px 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h4 {
+            color: #000;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 14px;
+        }
+
+        .footer-section ul a:hover {
+            color: #000;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 100px 24px 40px;
+                padding: 120px 24px 60px;
             }
 
-            .hero-content {
-                margin: 0 auto;
+            .hero h1 {
+                font-size: 40px;
             }
 
-            .store-buttons {
-                justify-content: center;
+            .hero p {
+                font-size: 18px;
             }
 
-            .header-buttons .btn-ghost {
+            .header-buttons .btn-outline {
+                display: none;
+            }
+
+            .gradient-shape,
+            .gradient-shape-2 {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
+    <div class="gradient-shape"></div>
+    <div class="gradient-shape-2"></div>
+
     <header class="header">
         <div class="header-content">
-            <a href="/" class="logo">partynextdoor</a>
+            <a href="/" class="logo"><img src="image/PND.png" ></a>
             <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Rechercher un évènement, artiste, organisateur ou ville">
+                <input type="text" class="search-input" placeholder="Rechercher un évènement, artiste ou lieu">
             </div>
             <div class="header-buttons">
-                <a href="#" class="btn btn-ghost">EXPLORER</a>
-                <a href="#" class="btn btn-outline">SE CONNECTER / S'INSCRIRE</a>
+                <a href="#" class="btn btn-outline">Se connecter</a>
+                <a href="#" class="btn btn-primary">S'inscrire</a>
             </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>CHOPE TON BILLET,<br>CRÉE DES SOUVENIRS</h1>
-            <p>Télécharge Shotgun et trouve les meilleurs évènements autour de toi.</p>
+            <h1>Bienvenue sur PartyNextDoor</h1>
+            <p>ton guide ultime pour toutes les soirées et festivals en France!</p>
+            <a href="#" class="cta-button">EN SAVOIR PLUS</a>
+            <div class="app-preview">
+                <img src="image/phone.webp" alt="PartyNextDoor App" style="background: #86858544; padding: 20px;">
+            </div>
             <div class="store-buttons">
                 <a href="#" class="store-link">App Store</a>
                 <a href="#" class="store-link">Play Store</a>
-                <div class="rating">
-                    <div class="stars">★★★★★</div>
-                    <span>4,9</span>
-                    <span>50k avis</span>
-                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="image/phone.webpp" alt="Shotgun App" style="width: 100%; height: auto;">
         </div>
     </section>
 
     <section class="events">
         <div class="events-header">
-            <h2>ÉVÈNEMENTS POPULAIRES</h2>
+            <h2>ÉVÉNEMENTS À LA UNE</h2>
             <div class="location">PARIS</div>
         </div>
         <div class="events-grid">
             <article class="event-card">
-                <img src="/placeholder.svg" alt="Madame Loyal Paris" class="event-image">
+                <img src="/placeholder.svg" alt="Événement 1" class="event-image">
                 <div class="event-content">
-                    <h3 class="event-title">Madame Loyal Paris : Xxl Edition</h3>
-                    <p class="event-venue">Parc des Expositions de Villepinte</p>
+                    <h3 class="event-title">City of Gods</h3>
+                    <p class="event-venue">Le Petit Bain, Paris</p>
                     <div class="event-details">
-                        <span>14 mars - 16 mars</span>
-                        <span>49,50 €</span>
+                        <span>ven. 16 jan | 23:30</span>
+                        <span>25€</span>
                     </div>
                     <div class="event-tags">
-                        <span class="tag">ELECTRO</span>
-                        <span class="tag">TECHNO</span>
-                        <span class="tag">HARD TECHNO</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="event-card">
-                <img src="/placeholder.svg" alt="Paris Calling" class="event-image">
-                <div class="event-content">
-                    <h3 class="event-title">Paris Calling - Mia Mao Opening</h3>
-                    <p class="event-venue">Mia Mao</p>
-                    <div class="event-details">
-                        <span>ven. 17 janv. | 23:00</span>
-                        <span>Liste d'attente</span>
-                    </div>
-                    <div class="event-tags">
-                        <span class="tag">TECHNO</span>
                         <span class="tag">HOUSE</span>
-                        <span class="tag">ELECTRO</span>
+                        <span class="tag">TECHNO</span>
                     </div>
                 </div>
             </article>
 
             <article class="event-card">
-                <img src="/placeholder.svg" alt="We Love Green 2025" class="event-image">
+                <img src="/placeholder.svg" alt="Événement 2" class="event-image">
                 <div class="event-content">
-                    <h3 class="event-title">We Love Green 2025</h3>
-                    <p class="event-venue">Paris</p>
+                    <h3 class="event-title">Electric Nights</h3>
+                    <p class="event-venue">La Machine du Moulin Rouge</p>
                     <div class="event-details">
-                        <span>6 juin - 8 juin</span>
-                        <span>29,00 €</span>
+                        <span>sam. 24 jan | 22:00</span>
+                        <span>30€</span>
                     </div>
                     <div class="event-tags">
-                        <span class="tag">POP</span>
-                        <span class="tag">RAP</span>
-                        <span class="tag">ELECTRO</span>
+                        <span class="tag">ÉLECTRO</span>
+                        <span class="tag">DANCE</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="event-card">
+                <img src="/placeholder.svg" alt="Événement 3" class="event-image">
+                <div class="event-content">
+                    <h3 class="event-title">Nuit Sonore</h3>
+                    <p class="event-venue">Rex Club</p>
+                    <div class="event-details">
+                        <span>sam. 1 déc | 23:00</span>
+                        <span>20€</span>
+                    </div>
+                    <div class="event-tags">
+                        <span class="tag">TECHNO</span>
+                        <span class="tag">UNDERGROUND</span>
                     </div>
                 </div>
             </article>
         </div>
     </section>
-    
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <div class="footer-section">
+                    <h4>À PROPOS</h4>
+                    <ul>
+                        <li><a href="#">Notre Histoire</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>DÉCOUVRIR</h4>
+                    <ul>
+                        <li><a href="#">Événements</a></li>
+                        <li><a href="#">Artistes</a></li>
+                        <li><a href="#">Lieux</a></li>
+                        <li><a href="#">Festivals</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>AIDE</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Billetterie</a></li>
+                        <li><a href="#">Organisateurs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>LÉGAL</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>© 2024 PartyNextDoor. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
-
-<!-- Add this section after the events section -->
-<section class="organizer">
-    <div class="organizer-content">
-        <h2>VOUS ORGANISEZ UN ÉVÈNEMENT ?<br>TROUVEZ VOTRE PUBLIC !</h2>
-        <p>Vendez vos billets à la bonne personne, au bon moment, avec le bon message, au bon prix et via le bon canal.</p>
-        <a href="#" class="btn btn-white">PUBLIER MON ÉVÈNEMENT</a>
-        <div class="dashboard-preview">
-            <img src="/placeholder.svg" alt="Dashboard Analytics" class="dashboard-image">
-        </div>
-    </div>
-</section>
-
-<style>
-/* Add these styles to the existing CSS */
-.organizer {
-    padding: 80px 24px;
-    background-color: #000;
-    text-align: center;
-}
-
-.organizer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.organizer h2 {
-    font-size: 36px;
-    line-height: 1.2;
-    margin-bottom: 24px;
-}
-
-.organizer p {
-    color: #999;
-    font-size: 18px;
-    max-width: 800px;
-    margin: 0 auto 32px;
-}
-
-.btn-white {
-    display: inline-block;
-    background: #fff;
-    color: #000;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-    margin-bottom: 48px;
-}
-
-.dashboard-preview {
-    max-width: 1000px;
-    margin: 0 auto;
-    perspective: 1000px;
-}
-
-.dashboard-image {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    transform: rotateX(10deg);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-@media (max-width: 768px) {
-    .organizer h2 {
-        font-size: 28px;
-    }
-    
-    .dashboard-image {
-        transform: none;
-    }
-}
-</style>
-
-
-<!-- Add this section after the organizer section -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="partners">
-            <h3>DES MILLIERS D'ORGANISATEURS NOUS FONT CONFIANCE</h3>
-            <div class="partner-logos">
-                <img src="/placeholder.svg" alt="Rock en Seine" class="partner-logo">
-                <img src="/placeholder.svg" alt="Nuits Sonores" class="partner-logo">
-                <img src="/placeholder.svg" alt="Golden Coast" class="partner-logo">
-                <img src="/placeholder.svg" alt="We Love Green" class="partner-logo">
-                <img src="/placeholder.svg" alt="Other Partner" class="partner-logo">
-            </div>
-        </div>
-
-        <div class="footer-nav">
-            <div class="footer-section">
-                <h4>À PROPOS</h4>
-                <ul>
-                    <li><a href="#">On recrute 👾</a></li>
-                    <li><a href="#">Kit presse</a></li>
-                    <li><a href="#">Artistes</a></li>
-                    <li><a href="#">Concerts</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>VILLES</h4>
-                <ul>
-                    <li><a href="#">Paris</a></li>
-                    <li><a href="#">Lyon</a></li>
-                    <li><a href="#">Aix-Marseille</a></li>
-                    <li><a href="#">Lille</a></li>
-                    <li><a href="#">Toulouse</a></li>
-                    <li><a href="#">Voir tout</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>ORGANISATEURS</h4>
-                <ul>
-                    <li><a href="#">REX CLUB</a></li>
-                    <li><a href="#">La Clairière</a></li>
-                    <li><a href="#">Kilomètre25</a></li>
-                    <li><a href="#">Nexus</a></li>
-                    <li><a href="#">PHANTOM</a></li>
-                    <li><a href="#">Voir tout</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>FESTIVALS</h4>
-                <ul>
-                    <li><a href="#">WE LOVE GREEN 2025</a></li>
-                    <li><a href="#">Foreztival 2025</a></li>
-                    <li><a href="#">Festival Marsatac - 27ème ...</a></li>
-                    <li><a href="#">Dox'Art Festival #8</a></li>
-                    <li><a href="#">REPERKUSOUND #20</a></li>
-                    <li><a href="#">Voir tout</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>SUPPORT</h4>
-                <ul>
-                    <li><a href="#">Aide</a></li>
-                    <li><a href="#">Nous contacter</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="community">
-                <h4>REJOINDRE LA COMMUNAUTÉ</h4>
-                <div class="app-buttons">
-                    <a href="#" class="store-button">App Store</a>
-                    <a href="#" class="store-button">Play Store</a>
-                </div>
-            </div>
-
-            <div class="social">
-                <h4>SUR LES RÉSEAUX</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><img src="/placeholder.svg" alt="Facebook"></a>
-                    <a href="#" aria-label="Instagram"><img src="/placeholder.svg" alt="Instagram"></a>
-                    <a href="#" aria-label="Spotify"><img src="/placeholder.svg" alt="Spotify"></a>
-                    <a href="#" aria-label="LinkedIn"><img src="/placeholder.svg" alt="LinkedIn"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="legal">
-            <div class="legal-links">
-                <a href="#">CONDITIONS D'UTILISATIONS</a>
-                <a href="#">POLITIQUE DONNÉES PERSONNELLES</a>
-                <a href="#">INFORMATIONS DU CONSOMMATEUR</a>
-                <a href="#">POLITIQUE COOKIES</a>
-            </div>
-            <div class="language-selector">
-                <select>
-                    <option>FRANÇAIS</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>© 2024 Shotgun SAS. Tous droits réservés.</p>
-            <p class="small">Ce site est protégé par reCAPTCHA et les <a href="#">Règles de Confidentialité</a> et <a href="#">Conditions d'Utilisation</a> de Google s'appliquent.</p>
-        </div>
-    </div>
-</footer>
-
-<style>
-/* Add these styles to the existing CSS */
-.footer {
-    background-color: #000;
-    padding: 80px 24px 40px;
-    border-top: 1px solid #333;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.partners {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.partners h3 {
-    font-size: 24px;
-    margin-bottom: 32px;
-}
-
-.partner-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 48px;
-    flex-wrap: wrap;
-}
-
-.partner-logo {
-    height: 40px;
-    width: auto;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.partner-logo:hover {
-    opacity: 1;
-}
-
-.footer-nav {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    margin-bottom: 60px;
-}
-
-.footer-section h4 {
-    color: #fff;
-    margin-bottom: 24px;
-    font-weight: 500;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 12px;
-}
-
-.footer-section ul a {
-    color: #999;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.footer-section ul a:hover {
-    color: #fff;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding-top: 40px;
-    border-top: 1px solid #333;
-}
-
-.app-buttons {
-    display: flex;
-    gap: 16px;
-    margin-top: 16px;
-}
-
-.store-button {
-    background: #1a1a1a;
-    padding: 8px 16px;
-    border-radius: 8px;
-    color: #fff;
-    text-decoration: none;
-}
-
-.social-links {
-    display: flex;
-    gap: 16px;
-    margin-top: 16px;
-}
-
-.social-links img {
-    width: 24px;
-    height: 24px;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.social-links img:hover {
-    opacity: 1;
-}
-
-.legal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 0;
-    border-top: 1px solid #333;
-}
-
-.legal-links {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-}
-
-.legal-links a {
-    color: #999;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.language-selector select {
-    background: transparent;
-    color: #999;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.copyright {
-    color: #999;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 24px;
-}
-
-.copyright .small {
-    font-size: 12px;
-    margin-top: 8px;
-}
-
-.copyright a {
-    color: #999;
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    .footer-bottom {
-        flex-direction: column;
-        gap: 32px;
-    }
-
-    .legal {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .legal-links {
-        justify-content: center;
-    }
-}
-</style>
-
