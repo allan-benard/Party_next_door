@@ -6,7 +6,7 @@
 
 body {
     background-image: url('image/back.png');
-    font-family: Arial, sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e); /* Dégradé rose-jaune */
     display: flex;
     justify-content: center;
