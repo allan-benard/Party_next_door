@@ -16,7 +16,7 @@ body {
 
 /* Header */
 .header {
-    background-color: #007BFF;
+    background-color: #333;
     color: white;
     padding: 2rem;
     text-align: center;
@@ -40,7 +40,7 @@ body {
 
 .section h2 {
     margin-bottom: 0.5rem;
-    color: #007BFF;
+    color: #333;
 }
 
 .section p {
@@ -48,7 +48,7 @@ body {
 }
 
 a {
-    color: #007BFF;
+    color: #3d3df6;
     text-decoration: none;
 }
 
