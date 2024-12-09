@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/page-event.css">
+    <link rel="stylesheet" href="css/navbar.css">   
+    <script src="script/deroulant-nav.js"></script>
 
     <title>Détails de l'Événement</title>
 
@@ -13,11 +16,30 @@
     <div class="gradient-shape"></div>
     <div class="gradient-shape-2"></div>
 
+
     <header class="header">
         <div class="header-content">
             <a href="/" class="logo"><img src="image/PND.png" alt="Logo"></a>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Rechercher un évènement, artiste ou lieu">
+            </div>
+            <div class="header-buttons">
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <button class="btn btn-dropdown" onclick="toggleDropdown()">Menu</button>
+                    <div class="dropdown-content" id="dropdownMenu">
+                        <a href="#">Se connecter</a>
+                        <a href="#">S'inscrire</a>
+                        <a href="#">Mon Profil</a>
+                        <a href="#">Paramètres</a>
+                        <a href="#">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
+    
+    
 
     <section class="event-detail">
         <div class="event-content">
