@@ -34,9 +34,9 @@
         .section {
             height: 100vh;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
-            padding-left: 5vw;
+            padding:0 5vw;
         }
 
         .container {
@@ -90,7 +90,12 @@
             color: #000;
             border: 2px solid #000;
         }
-
+        .promo-video {
+            max-width: 30%; /* Taille réduite */
+            height: auto;
+            border-radius: 10px; /* Coins arrondis */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+        }
         /* Deuxième section */
         .section-2 {
             height: 100vh;
@@ -159,14 +164,10 @@
         }
 
         .section-3 p {
-        margin: 0;
-        font-size: 25px;
-        color: #000000;
-        text-align: center; /* Centrage du texte */
-        max-width: 900px; /* Ajustez cette valeur si nécessaire */
-        margin: 20px auto; /* Centrage du paragraphe dans la section */
+            font-size: 25px;
+            color: #000000;
+            margin: 20px 0;
         }
-
 
         .section-3 .button {
             display: inline-block;
@@ -196,6 +197,12 @@
             <p>TROUVE TA SOIRÉE SELON TES ENVIES ET CRÉE TOI DES SOUVENIRS POUR LA VIE</p>
             <button class="btn">Télécharge l'app</button>
         </div>
+        <video class="promo-video" autoplay muted loop>
+            <source src="image/caca.mov" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+    </div>
+    
     </div>
 
     <!-- Deuxième section -->
